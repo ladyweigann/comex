@@ -38,6 +38,8 @@ public class Main {
 
                 Pedido pedido = new Pedido(categoria, produto, cliente, preco, quantidade, data);
                 pedidos.add(pedido);
+                
+                System.out.println("valor total ->>> " + pedido.getValorTotal());
 
                 quantidadeDeRegistros++;
             }

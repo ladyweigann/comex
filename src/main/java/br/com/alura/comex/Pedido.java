@@ -13,7 +13,7 @@ public class Pedido {
     private int quantidade;
 
     private LocalDate data;
-
+    
     public Pedido(String categoria, String produto, String cliente, BigDecimal preco, int quantidade, LocalDate data) {
         this.categoria = categoria;
         this.produto = produto;
@@ -47,6 +47,22 @@ public class Pedido {
         return data;
     }
 
+    //implementar método getValorTotal
+    public BigDecimal getValorTotal() {
+    	return this.preco.multiply(new BigDecimal(this.quantidade));
+    }
+    
+    //implementar método getValorTotal
+    public boolean isMaisBaratoQue(Pedido outroPedido) {
+    	return true;
+    }
+    
+    //implementar método getValorTotal
+    public boolean isMaisCaroQue(Pedido outroPedido) {
+    	return true;
+    }
+    
+    
     @Override
     public String toString() {
         return "Pedido{" +
