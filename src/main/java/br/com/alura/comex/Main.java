@@ -39,8 +39,6 @@ public class Main {
                 Pedido pedido = new Pedido(categoria, produto, cliente, preco, quantidade, data);
                 pedidos.add(pedido);
                 
-                System.out.println("valor total ->>> " + pedido.getValorTotal());
-
                 quantidadeDeRegistros++;
             }
         } catch (URISyntaxException e) {
@@ -65,16 +63,19 @@ public class Main {
             if (pedidoAtual == null) {
                 break;
             }
-
-            if (pedidoMaisBarato == null || pedidoAtual.getPreco().multiply(new BigDecimal(pedidoAtual.getQuantidade())).compareTo(pedidoMaisBarato.getPreco().multiply(new BigDecimal(pedidoMaisBarato.getQuantidade()))) < 0) {
+            
+            //implementando método de verificação isMaisBaratoQue
+            if (pedidoMaisBarato == null || pedidoAtual.isMaisBaratoQue(pedidoMaisBarato)) {
                 pedidoMaisBarato = pedidoAtual;
             }
-
-            if (pedidoMaisCaro == null || pedidoAtual.getPreco().multiply(new BigDecimal(pedidoAtual.getQuantidade())).compareTo(pedidoMaisCaro.getPreco().multiply(new BigDecimal(pedidoMaisCaro.getQuantidade()))) > 0) {
+            	
+          //implementando método de verificação isMaisCaroQue
+            if (pedidoMaisCaro == null || pedidoAtual.isMaisCaroQue(pedidoMaisCaro)) {
                 pedidoMaisCaro = pedidoAtual;
             }
-
-            montanteDeVendas = montanteDeVendas.add(pedidoAtual.getPreco().multiply(new BigDecimal(pedidoAtual.getQuantidade())));
+            
+            //substituindo pelo método criado
+            montanteDeVendas = montanteDeVendas.add(pedidoAtual.getValorTotal());
             totalDeProdutosVendidos += pedidoAtual.getQuantidade();
             totalDePedidosRealizados++;
 

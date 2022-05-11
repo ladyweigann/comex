@@ -52,14 +52,22 @@ public class Pedido {
     	return this.preco.multiply(new BigDecimal(this.quantidade));
     }
     
-    //implementar método getValorTotal
+    //implementar método isMaisBaratoQue
     public boolean isMaisBaratoQue(Pedido outroPedido) {
-    	return true;
+    	if(this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0) {
+    		return true;
+    	}else {
+    		return false;
+    	}
     }
     
-    //implementar método getValorTotal
+    //implementar método isMaisCaroQue
     public boolean isMaisCaroQue(Pedido outroPedido) {
-    	return true;
+    	if(this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0) {
+    		return true;
+    	}else {
+    		return false;
+    	}
     }
     
     
