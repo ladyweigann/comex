@@ -54,7 +54,7 @@ public class Pedido {
     
     //implementar método isMaisBaratoQue
     public boolean isMaisBaratoQue(Pedido outroPedido) {
-    	if(this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0) {
+    	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0) {
     		return true;
     	}else {
     		return false;
@@ -63,7 +63,7 @@ public class Pedido {
     
     //implementar método isMaisCaroQue
     public boolean isMaisCaroQue(Pedido outroPedido) {
-    	if(this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0) {
+    	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0) {
     		return true;
     	}else {
     		return false;
