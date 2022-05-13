@@ -47,12 +47,10 @@ public class Pedido {
         return data;
     }
 
-    //implementar método getValorTotal
     public BigDecimal getValorTotal() {
     	return this.preco.multiply(new BigDecimal(this.quantidade));
     }
     
-    //implementar método isMaisBaratoQue
     public boolean isMaisBaratoQue(Pedido outroPedido) {
     	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0) {
     		return true;
@@ -61,7 +59,6 @@ public class Pedido {
     	}
     }
     
-    //implementar método isMaisCaroQue
     public boolean isMaisCaroQue(Pedido outroPedido) {
     	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0) {
     		return true;
@@ -69,7 +66,6 @@ public class Pedido {
     		return false;
     	}
     }
-    
     
     @Override
     public String toString() {

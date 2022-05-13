@@ -32,21 +32,20 @@ public class RelatorioSintetico {
 				this.pedidoMaisCaro = pedidoAtual;
 			}
 
-			montanteDeVendas = montanteDeVendas.add(pedidoAtual.getValorTotal());
-			//totalDeProdutosVendidos += pedidoAtual.getQuantidade();
-			
-			
-			//totalDePedidosRealizados++;
-
 			if (!categoriasProcessadas.contains(pedidoAtual.getCategoria())) {
 				totalDeCategorias++;
 				categoriasProcessadas.add(pedidoAtual.getCategoria());
 			}
 		}
+		
 		//Refatorando cálculos
-		//montanteDeVendas = pedidos.stream().reduce.sum(); - BigDecimal
+		
+		montanteDeVendas = pedidos.stream().map(Pedido::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
 		totalDeProdutosVendidos = pedidos.stream().mapToInt(Pedido::getQuantidade).sum();
 		totalDePedidosRealizados = pedidos.size();
+		//Categorias processadas - quantidade de categorias distintas
+		//Mais barato e mais caro
+		
 
 	}
 
