@@ -1,6 +1,7 @@
 package br.com.alura.comex;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
 
 public class RelatorioSintetico {
@@ -12,7 +13,7 @@ public class RelatorioSintetico {
 	Pedido pedidoMaisCaro;
 	int totalDeCategorias;
 
-	CategoriasProcessadas categoriasProcessadas = new CategoriasProcessadas();
+	HashSet<String> categoriasProcessadas = new HashSet<>();
 
 	public RelatorioSintetico(List<Pedido> pedidos) {
 
@@ -32,14 +33,20 @@ public class RelatorioSintetico {
 			}
 
 			montanteDeVendas = montanteDeVendas.add(pedidoAtual.getValorTotal());
-			totalDeProdutosVendidos += pedidoAtual.getQuantidade();
-			totalDePedidosRealizados++;
+			//totalDeProdutosVendidos += pedidoAtual.getQuantidade();
+			
+			
+			//totalDePedidosRealizados++;
 
 			if (!categoriasProcessadas.contains(pedidoAtual.getCategoria())) {
 				totalDeCategorias++;
 				categoriasProcessadas.add(pedidoAtual.getCategoria());
 			}
 		}
+		//Refatorando cálculos
+		//montanteDeVendas = pedidos.stream().reduce.sum(); - BigDecimal
+		totalDeProdutosVendidos = pedidos.stream().mapToInt(Pedido::getQuantidade).sum();
+		totalDePedidosRealizados = pedidos.size();
 
 	}
 

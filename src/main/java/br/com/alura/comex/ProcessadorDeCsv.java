@@ -16,15 +16,17 @@ public class ProcessadorDeCsv {
 	static public List<Pedido> leitorCSV(String nomeArquivo) throws IOException, URISyntaxException{
 		
 		ArrayList<Pedido> pedidos = new ArrayList<>();
+		
 		try {
 			URL recursoCSV = ClassLoader.getSystemResource(nomeArquivo + ".csv");
-		    Path caminhoDoArquivo = caminhoDoArquivo = Path.of(recursoCSV.toURI());
+		    Path caminhoDoArquivo = Path.of(recursoCSV.toURI());
 		    
 		    Scanner leitorDeLinhas = new Scanner(caminhoDoArquivo);
 
             leitorDeLinhas.nextLine();
 
             int quantidadeDeRegistros = 0;
+            
             while (leitorDeLinhas.hasNextLine()) {
                 String linha = leitorDeLinhas.nextLine();
                 String[] registro = linha.split(",");

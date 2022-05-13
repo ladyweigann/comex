@@ -14,7 +14,6 @@ public class Main {
     	
     	List<Pedido> pedidos = ProcessadorDeCsv.leitorCSV("pedidos");
     	
-
         RelatorioSintetico relatorioSintetico = new RelatorioSintetico(pedidos);
             
         System.out.println("#### RELATÓRIO DE VALORES TOTAIS");
