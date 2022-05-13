@@ -1,7 +1,6 @@
 package br.com.alura.comex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URISyntaxException;
 import java.text.NumberFormat;
@@ -20,8 +19,8 @@ public class Main {
         System.out.printf("- TOTAL DE PEDIDOS REALIZADOS: %s\n", relatorioSintetico.getTotalDePedidosRealizados());
         System.out.printf("- TOTAL DE PRODUTOS VENDIDOS: %s\n", relatorioSintetico.getTotalDeProdutosVendidos());
         System.out.printf("- TOTAL DE CATEGORIAS: %s\n", relatorioSintetico.getCategoriasProcessadas());
-        System.out.printf("- MONTANTE DE VENDAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.montanteDeVendas.setScale(2, RoundingMode.HALF_DOWN)));
-        System.out.printf("- PEDIDO MAIS BARATO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.pedidoMaisBarato.getPreco().multiply(new BigDecimal(relatorioSintetico.pedidoMaisBarato.getQuantidade())).setScale(2, RoundingMode.HALF_DOWN)), relatorioSintetico.pedidoMaisBarato.getProduto());
-        System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.pedidoMaisCaro.getPreco().multiply(new BigDecimal(relatorioSintetico.pedidoMaisCaro.getQuantidade())).setScale(2, RoundingMode.HALF_DOWN)), relatorioSintetico.pedidoMaisCaro.getProduto());
+        System.out.printf("- MONTANTE DE VENDAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getMontanteDeVendas().setScale(2, RoundingMode.HALF_DOWN)));
+        System.out.printf("- PEDIDO MAIS BARATO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisBarato().get().getValorTotal()), relatorioSintetico.getPedidoMaisBarato().get().getProduto());
+        System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisCaro().get().getValorTotal()), relatorioSintetico.getPedidoMaisCaro().get().getProduto());
     }
 }

@@ -51,22 +51,6 @@ public class Pedido {
     	return this.preco.multiply(new BigDecimal(this.quantidade));
     }
     
-    public boolean isMaisBaratoQue(Pedido outroPedido) {
-    	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
-    
-    public boolean isMaisCaroQue(Pedido outroPedido) {
-    	if(outroPedido == null || this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
-    
     @Override
     public String toString() {
         return "Pedido{" +
