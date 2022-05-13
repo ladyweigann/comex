@@ -19,7 +19,7 @@ public class Main {
         System.out.println("#### RELATÓRIO DE VALORES TOTAIS");
         System.out.printf("- TOTAL DE PEDIDOS REALIZADOS: %s\n", relatorioSintetico.getTotalDePedidosRealizados());
         System.out.printf("- TOTAL DE PRODUTOS VENDIDOS: %s\n", relatorioSintetico.getTotalDeProdutosVendidos());
-        System.out.printf("- TOTAL DE CATEGORIAS: %s\n", relatorioSintetico.getTotalDeCategorias());
+        System.out.printf("- TOTAL DE CATEGORIAS: %s\n", relatorioSintetico.getCategoriasProcessadas());
         System.out.printf("- MONTANTE DE VENDAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.montanteDeVendas.setScale(2, RoundingMode.HALF_DOWN)));
         System.out.printf("- PEDIDO MAIS BARATO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.pedidoMaisBarato.getPreco().multiply(new BigDecimal(relatorioSintetico.pedidoMaisBarato.getQuantidade())).setScale(2, RoundingMode.HALF_DOWN)), relatorioSintetico.pedidoMaisBarato.getProduto());
         System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.pedidoMaisCaro.getPreco().multiply(new BigDecimal(relatorioSintetico.pedidoMaisCaro.getQuantidade())).setScale(2, RoundingMode.HALF_DOWN)), relatorioSintetico.pedidoMaisCaro.getProduto());
