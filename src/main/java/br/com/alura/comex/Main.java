@@ -20,7 +20,10 @@ public class Main {
         System.out.printf("- TOTAL DE PRODUTOS VENDIDOS: %s\n", relatorioSintetico.getTotalDeProdutosVendidos());
         System.out.printf("- TOTAL DE CATEGORIAS: %s\n", relatorioSintetico.getCategoriasProcessadas());
         System.out.printf("- MONTANTE DE VENDAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getMontanteDeVendas().setScale(2, RoundingMode.HALF_DOWN)));
-        System.out.printf("- PEDIDO MAIS BARATO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisBarato().get().getValorTotal()), relatorioSintetico.getPedidoMaisBarato().get().getProduto());
-        System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisCaro().get().getValorTotal()), relatorioSintetico.getPedidoMaisCaro().get().getProduto());
+        System.out.printf("- PEDIDO MAIS BARATO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisBarato().getValorTotal()), relatorioSintetico.getPedidoMaisBarato().getProduto());
+        System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisCaro().getValorTotal()), relatorioSintetico.getPedidoMaisCaro().getProduto());
+        
+        
+        relatorioSintetico.relatorioClientesFieis(pedidos);
     }
 }
