@@ -1,10 +1,11 @@
 package br.com.alura.comex;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RelatorioSintetico {
 
@@ -34,20 +35,44 @@ public class RelatorioSintetico {
 	
 	public void relatorioClientesFieis(List<Pedido> pedidos) {
 		
-		//pedidos.stream().sorted((c1, c2) -> c1.getCliente().compareTo(c2.getCliente())).forEach(System.out::println);
-		Map<Object, Long> collect = pedidos.stream()
-				.map(Pedido::getCliente)
-				.collect(Collectors.groupingBy(nome -> nome, Collectors.counting()));
-		System.out.println(collect.keySet());
-		System.out.println(collect.values());
+		List<String> clientes = pedidos.stream().map(Pedido::getCliente).sorted(Comparator.naturalOrder()).toList();
 		
-		//System.out.println(collect.getKey());
+		List<String> teste = new ArrayList<>();
 		
-		//List<Object> clientes = new ArrayList<Object>();
+		for (int i = 0; i < clientes.size(); i++) {
+			teste.add(clientes.get(i));
+		}
 		
-		//clientes.add(clientes)
+		boolean controle = true;
+		int contador = 1;
+		String nome;
 		
+		System.out.println("\n\n#### RELATÓRIO DE CLIENTES FIÉIS");
 		
+		while(controle) {
+			
+			controle = false;
+			
+			for (int i = 0; i < (teste.size()-1); i++) {
+				nome = teste.get(i);
+				
+				if(teste.get(i).equals(teste.get(i+1))) {
+					teste.remove(i+1);
+					contador++;
+					controle = true;
+					break;
+				}else {
+					System.out.println("\nNOME: " + nome + "\nNº DE PEDIDOS: " + contador);
+					controle = true;
+				}
+				
+				teste.remove(i);
+				contador = 1;
+				
+			}
+			
+		}
+		System.out.println("\nNOME: " + teste.get(0) + "\nNº DE PEDIDOS: " + contador);
 	}
 
 	public int getTotalDeProdutosVendidos() {
