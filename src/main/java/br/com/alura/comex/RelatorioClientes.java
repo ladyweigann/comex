@@ -20,7 +20,7 @@ public class RelatorioClientes {
 		
 		
 		System.out.println("\n\n#### RELATÓRIO DE CLIENTES FIÉIS");
-		clientesOrdenados.forEach((key, value) -> System.out.println("\nNOME: "+ key + "\nNº DE PEDIDOS: " + value));;
+		clientesOrdenados.forEach((key, value) -> System.out.println("\nNOME: "+ key + "\nNº DE PEDIDOS: " + value));
 		
 
 		
