@@ -17,6 +17,7 @@ public class RelatorioVendasCategoria {
 		Map<String, List<Pedido>> categorias = pedidos.stream()
 				.collect(Collectors.groupingBy(Pedido::getCategoria));
 		
+		
 		categorias.entrySet().stream().sorted(Entry.comparingByKey()).collect(Collectors.toMap(Entry::getKey, Entry::getValue, (c1, c2) -> c1, LinkedHashMap::new))	//Ordem alfabética	
 		.forEach((categoria, pedido) -> {
 			System.out.printf("\nCATEGORIA: " + categoria 
@@ -27,5 +28,6 @@ public class RelatorioVendasCategoria {
 		});
 		
 	}
+	
 	
 }

@@ -13,7 +13,6 @@ static public void relatorioProdutosMaisVendidos(List<Pedido> pedidos) {
 	
 	produtos.forEach((produto, pedido) -> {
 		System.out.println("\nPRODUTO: " + produto + "\nQUANTIDADE: " + pedido.stream().mapToInt(Pedido::getQuantidade).sum());
-		
 	});
 	
 	}

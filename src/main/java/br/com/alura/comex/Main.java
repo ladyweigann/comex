@@ -24,8 +24,9 @@ public class Main {
         System.out.printf("- PEDIDO MAIS CARO: %s (%s)\n", NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(relatorioSintetico.getPedidoMaisCaro().getValorTotal()), relatorioSintetico.getPedidoMaisCaro().getProduto());
         
         
-        RelatorioClientes.relatorioClientesFieis(pedidos);
+        RelatorioClientesFieis.relatorioClientesFieis(pedidos);
         RelatorioVendasCategoria.relatorioVendasPorCategoria(pedidos);
         RelatorioProdutosMaisVendidos.relatorioProdutosMaisVendidos(pedidos);
+        
     }
 }

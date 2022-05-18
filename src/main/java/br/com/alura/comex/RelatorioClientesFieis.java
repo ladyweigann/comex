@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class RelatorioClientes {
+public class RelatorioClientesFieis {
 
 
 	static public void relatorioClientesFieis(List<Pedido> pedidos) {
@@ -20,7 +20,7 @@ public class RelatorioClientes {
 		
 		
 		System.out.println("\n\n#### RELATÓRIO DE CLIENTES FIÉIS");
-		clientesOrdenados.forEach((key, value) -> System.out.println("\nNOME: "+ key + "\nNº DE PEDIDOS: " + value));
+		clientesOrdenados.forEach((cliente, pedido) -> System.out.println("\nNOME: "+ cliente + "\nNº DE PEDIDOS: " + pedido));
 		
 
 		

@@ -15,7 +15,7 @@ public class ProcessadorDeCsv {
 
 	static public List<Pedido> leitorCSV(String nomeArquivo) throws IOException, URISyntaxException{
 		
-		ArrayList<Pedido> pedidos = new ArrayList<>();
+		List<Pedido> pedidos = new ArrayList<>();
 		
 		try {
 			URL recursoCSV = ClassLoader.getSystemResource(nomeArquivo + ".csv");
