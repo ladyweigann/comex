@@ -26,7 +26,6 @@ public class Main {
         
         RelatorioClientesFieis.relatorioClientesFieis(pedidos);
         RelatorioVendasCategoria.relatorioVendasPorCategoria(pedidos);
-        RelatorioProdutosMaisVendidos.relatorioProdutosMaisVendidos(pedidos);
         
     }
 }

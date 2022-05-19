@@ -16,7 +16,6 @@ public class RelatorioVendasCategoria {
 		Map<String, List<Pedido>> categorias = pedidos.stream()
 				.collect(Collectors.groupingBy(Pedido::getCategoria, TreeMap::new, Collectors.toList()));
 		
-		
 		categorias.forEach((categoria, pedido) -> {
 			System.out.printf("\nCATEGORIA: " + categoria 
 					+ "\nQUANTIDADE VENDIDA: " + pedido.stream().mapToInt(Pedido::getQuantidade).sum()
