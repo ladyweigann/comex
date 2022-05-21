@@ -8,10 +8,8 @@ public class Pedido {
     private String categoria;
     private String produto;
     private String cliente;
-
     private BigDecimal preco;
     private int quantidade;
-
     private LocalDate data;
     
     public Pedido(String categoria, String produto, String cliente, BigDecimal preco, int quantidade, LocalDate data) {

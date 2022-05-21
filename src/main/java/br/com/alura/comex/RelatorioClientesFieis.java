@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class RelatorioClientesFieis {
 
 
-	static public void relatorioClientesFieis(List<Pedido> pedidos) {
+	public static void relatorioClientesFieis(List<Pedido> pedidos) {
 		
 		
 		Map<String, Long> clientesOrdenados = pedidos.stream()

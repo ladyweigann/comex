@@ -1,8 +1,11 @@
 package br.com.alura.comex;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class RelatorioSintetico {
 
@@ -15,11 +18,12 @@ public class RelatorioSintetico {
 
 	public RelatorioSintetico(List<Pedido> pedidos) {
 		
+		
 		if(pedidos == null || pedidos.isEmpty()) {
 			throw new IllegalArgumentException("A lista não pode estar vazia");
 		}
 		
-		this.montanteDeVendas = pedidos.stream().map(Pedido::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+		this.montanteDeVendas = pedidos.stream().map(Pedido::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_DOWN);
 		this.totalDeProdutosVendidos = pedidos.stream().mapToInt(Pedido::getQuantidade).sum();
 		this.totalDePedidosRealizados = pedidos.size();
 		this.categoriasProcessadas = pedidos.stream().map(Pedido::getCategoria).distinct().count();
@@ -51,5 +55,16 @@ public class RelatorioSintetico {
 		return pedidoMaisCaro;
 	}
 
+	
+	@Override
+    public String toString() {
+        return "#### RELATÓRIO DE VALORES TOTAIS" +
+                "\n- TOTAL DE PEDIDOS REALIZADOS:" + totalDePedidosRealizados +
+                "\n- TOTAL DE PRODUTOS VENDIDOS: " + totalDeProdutosVendidos +
+                "\n- TOTAL DE CATEGORIAS:" + categoriasProcessadas +
+                "\n- MONTANTE DE VENDAS:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(montanteDeVendas.setScale(2, RoundingMode.HALF_DOWN)) +
+                "\n- PEDIDO MAIS BARATO:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(pedidoMaisBarato.getValorTotal()) + "(" + pedidoMaisBarato.getProduto() + ")" +
+                "\n- PEDIDO MAIS CARO:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(pedidoMaisCaro.getValorTotal()) + "(" + pedidoMaisCaro.getProduto() + ")";
+    }
 
 }

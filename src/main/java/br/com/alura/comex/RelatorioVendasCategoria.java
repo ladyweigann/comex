@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class RelatorioVendasCategoria {
 
-	static public void relatorioVendasPorCategoria(List<Pedido> pedidos) {
+	public static void relatorioVendasPorCategoria(List<Pedido> pedidos) {
 		
 		Map<String, List<Pedido>> categorias = pedidos.stream()
 				.collect(Collectors.groupingBy(Pedido::getCategoria, TreeMap::new, Collectors.toList()));
