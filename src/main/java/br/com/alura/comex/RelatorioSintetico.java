@@ -2,10 +2,8 @@ package br.com.alura.comex;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 public class RelatorioSintetico {
 
@@ -15,7 +13,8 @@ public class RelatorioSintetico {
 	private Pedido pedidoMaisBarato;
 	private Pedido pedidoMaisCaro;
 	private long categoriasProcessadas;
-
+	FormatarSaidaDeValores formatar = new FormatarSaidaDeValores();
+	
 	public RelatorioSintetico(List<Pedido> pedidos) {
 		
 		
@@ -32,43 +31,41 @@ public class RelatorioSintetico {
 
 	}
 	
-	public int getTotalDeProdutosVendidos() {
+	public int getTotalDeProdutosVendidos(List<Pedido> pedidos) {
 		return totalDeProdutosVendidos;
 	}
 
-	public int getTotalDePedidosRealizados() {
+	public int getTotalDePedidosRealizados(List<Pedido> pedidos) {
 		return totalDePedidosRealizados;
 	}
 
-	public BigDecimal getMontanteDeVendas() {
+	public BigDecimal getMontanteDeVendas(List<Pedido> pedidos) {
 		return montanteDeVendas;
 	}
 
-	public long getCategoriasProcessadas() {
+	public long getCategoriasProcessadas(List<Pedido> pedidos) {
 		return categoriasProcessadas;
 	}
 
-	public Pedido getPedidoMaisBarato() {
+	public Pedido getPedidoMaisBarato(List<Pedido> pedidos) {
 		return pedidoMaisBarato;
 	}
-	public Pedido getPedidoMaisCaro() {
+	public Pedido getPedidoMaisCaro(List<Pedido> pedidos) {
 		return pedidoMaisCaro;
 	}
 
 	
 	@Override
     public String toString() {
+		
         return "#### RELATÓRIO DE VALORES TOTAIS" +
                 "\n- TOTAL DE PEDIDOS REALIZADOS: " + totalDePedidosRealizados +
                 "\n- TOTAL DE PRODUTOS VENDIDOS: " + totalDeProdutosVendidos +
                 "\n- TOTAL DE CATEGORIAS: " + categoriasProcessadas +
-                "\n- MONTANTE DE VENDAS: " + formatarSaidaDeValores(montanteDeVendas) +
-                "\n- PEDIDO MAIS BARATO: " + formatarSaidaDeValores(pedidoMaisBarato.getValorTotal()) + " (" + pedidoMaisBarato.getProduto() + ")" +
-                "\n- PEDIDO MAIS CARO: " + formatarSaidaDeValores(pedidoMaisCaro.getValorTotal()) + " (" + pedidoMaisCaro.getProduto() + ")";
+                "\n- MONTANTE DE VENDAS: " + formatar.formatarSaidaDeValores(montanteDeVendas) +
+                "\n- PEDIDO MAIS BARATO: " + formatar.formatarSaidaDeValores(pedidoMaisBarato.getValorTotal()) + " (" + pedidoMaisBarato.getProduto() + ")" +
+                "\n- PEDIDO MAIS CARO: " + formatar.formatarSaidaDeValores(pedidoMaisCaro.getValorTotal()) + " (" + pedidoMaisCaro.getProduto() + ")";
     }
 
-	private String formatarSaidaDeValores(BigDecimal valor) {
-		return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
-	}
-
+	
 }

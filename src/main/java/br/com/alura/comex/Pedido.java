@@ -1,6 +1,7 @@
 package br.com.alura.comex;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class Pedido {
@@ -46,7 +47,7 @@ public class Pedido {
     }
 
     public BigDecimal getValorTotal() {
-    	return this.preco.multiply(new BigDecimal(this.quantidade));
+    	return this.preco.multiply(new BigDecimal(this.quantidade)).setScale(2, RoundingMode.HALF_DOWN);
     }
     
     @Override
