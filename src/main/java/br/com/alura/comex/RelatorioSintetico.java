@@ -59,12 +59,16 @@ public class RelatorioSintetico {
 	@Override
     public String toString() {
         return "#### RELATÓRIO DE VALORES TOTAIS" +
-                "\n- TOTAL DE PEDIDOS REALIZADOS:" + totalDePedidosRealizados +
+                "\n- TOTAL DE PEDIDOS REALIZADOS: " + totalDePedidosRealizados +
                 "\n- TOTAL DE PRODUTOS VENDIDOS: " + totalDeProdutosVendidos +
-                "\n- TOTAL DE CATEGORIAS:" + categoriasProcessadas +
-                "\n- MONTANTE DE VENDAS:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(montanteDeVendas.setScale(2, RoundingMode.HALF_DOWN)) +
-                "\n- PEDIDO MAIS BARATO:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(pedidoMaisBarato.getValorTotal()) + "(" + pedidoMaisBarato.getProduto() + ")" +
-                "\n- PEDIDO MAIS CARO:" + NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(pedidoMaisCaro.getValorTotal()) + "(" + pedidoMaisCaro.getProduto() + ")";
+                "\n- TOTAL DE CATEGORIAS: " + categoriasProcessadas +
+                "\n- MONTANTE DE VENDAS: " + formatarSaidaDeValores(montanteDeVendas) +
+                "\n- PEDIDO MAIS BARATO: " + formatarSaidaDeValores(pedidoMaisBarato.getValorTotal()) + " (" + pedidoMaisBarato.getProduto() + ")" +
+                "\n- PEDIDO MAIS CARO: " + formatarSaidaDeValores(pedidoMaisCaro.getValorTotal()) + " (" + pedidoMaisCaro.getProduto() + ")";
     }
+
+	private String formatarSaidaDeValores(BigDecimal valor) {
+		return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
+	}
 
 }
