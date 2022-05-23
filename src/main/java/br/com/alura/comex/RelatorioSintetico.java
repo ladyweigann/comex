@@ -31,26 +31,26 @@ public class RelatorioSintetico {
 
 	}
 	
-	public int getTotalDeProdutosVendidos(List<Pedido> pedidos) {
+	public int getTotalDeProdutosVendidos() {
 		return totalDeProdutosVendidos;
 	}
 
-	public int getTotalDePedidosRealizados(List<Pedido> pedidos) {
+	public int getTotalDePedidosRealizados() {
 		return totalDePedidosRealizados;
 	}
 
-	public BigDecimal getMontanteDeVendas(List<Pedido> pedidos) {
+	public BigDecimal getMontanteDeVendas() {
 		return montanteDeVendas;
 	}
 
-	public long getCategoriasProcessadas(List<Pedido> pedidos) {
+	public long getCategoriasProcessadas() {
 		return categoriasProcessadas;
 	}
 
-	public Pedido getPedidoMaisBarato(List<Pedido> pedidos) {
+	public Pedido getPedidoMaisBarato() {
 		return pedidoMaisBarato;
 	}
-	public Pedido getPedidoMaisCaro(List<Pedido> pedidos) {
+	public Pedido getPedidoMaisCaro() {
 		return pedidoMaisCaro;
 	}
 
