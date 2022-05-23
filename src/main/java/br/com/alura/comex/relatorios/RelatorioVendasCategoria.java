@@ -1,10 +1,13 @@
-package br.com.alura.comex;
+package br.com.alura.comex.relatorios;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+
+import br.com.alura.comex.FormatarSaidaDeValores;
+import br.com.alura.comex.Pedido;
 
 public class RelatorioVendasCategoria {
 

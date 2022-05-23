@@ -1,9 +1,12 @@
-package br.com.alura.comex;
+package br.com.alura.comex.relatorios;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+
+import br.com.alura.comex.FormatarSaidaDeValores;
+import br.com.alura.comex.Pedido;
 
 public class RelatorioSintetico {
 

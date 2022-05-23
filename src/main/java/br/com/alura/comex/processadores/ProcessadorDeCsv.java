@@ -1,4 +1,4 @@
-package br.com.alura.comex;
+package br.com.alura.comex.processadores;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import br.com.alura.comex.Pedido;
 
 public class ProcessadorDeCsv {
 
