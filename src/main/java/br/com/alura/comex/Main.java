@@ -1,20 +1,20 @@
 package br.com.alura.comex;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, URISyntaxException{
+    public static void main(String[] args) throws Exception{
     	
-    	List<Pedido> pedidos = ProcessadorDeCsv.leitorCSV("pedidos");
+    	List<Pedido> pedidosCSV = ProcessadorDeCsv.leitorCSV("pedidos");
+    	List<Pedido> pedidosJSON = ProcessadorDeJson.leitorJson("pedidos");
+    	List<Pedido> pedidosXml = ProcessadorDeXml.leitorXml("pedidos");
     	
-        RelatorioSintetico relatorioSintetico = new RelatorioSintetico(pedidos);
+        RelatorioSintetico relatorioSintetico = new RelatorioSintetico(pedidosXml);
         System.out.println(relatorioSintetico);
         
-        RelatorioClientesFieis.relatorioClientesFieis(pedidos);
-        RelatorioVendasCategoria.relatorioVendasPorCategoria(pedidos);
+        RelatorioClientesFieis.relatorioClientesFieis(pedidosXml);
+        RelatorioVendasCategoria.relatorioVendasPorCategoria(pedidosXml);
         
     }
     
