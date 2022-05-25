@@ -32,7 +32,7 @@ public class Menu {
 
 		TipoDeRelatorio.getTipoDeRelatorio(opt, pedidos);
 
-		 sc.close();
+		sc.close();
 	}
 
 	
