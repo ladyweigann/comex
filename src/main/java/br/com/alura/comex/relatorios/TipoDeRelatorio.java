@@ -1,15 +1,14 @@
-package br.com.alura.comex;
+package br.com.alura.comex.relatorios;
 
 import java.util.List;
 
-import br.com.alura.comex.relatorios.RelatorioClientesFieis;
-import br.com.alura.comex.relatorios.RelatorioSintetico;
-import br.com.alura.comex.relatorios.RelatorioVendasCategoria;
+import br.com.alura.comex.Pedido;
 
 public class TipoDeRelatorio {
 
 
 	public static void getTipoDeRelatorio(int opt, List<Pedido> pedidos) {
+		
 		switch (opt) {
 		case 1: {
 			RelatorioSintetico relatorioSintetico = new RelatorioSintetico(pedidos);

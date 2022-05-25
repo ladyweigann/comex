@@ -5,15 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.alura.comex.processadores.TipoDeProcessador;
+import br.com.alura.comex.relatorios.TipoDeRelatorio;
+
 public class Menu {
 
 	public static void exibirMenu()  throws Exception {
+		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.println(
 				"Bem-vindo ao Comex\n\nDigite a opção correspondente ao tipo de arquivo que será lido: \n1 - CSV;\n2 - JSON;\n3 - XML");
 		int opt = sc.nextInt();
+		
 		System.out.println("Digite o nome do seu arquivo (sem extensão)");
+		
 		String nomeArquivo = sc.next();
+		
 		List<Pedido> pedidos = new ArrayList<>();
 
 		pedidos = TipoDeProcessador.getTipoDeProcessador(opt, nomeArquivo, pedidos);

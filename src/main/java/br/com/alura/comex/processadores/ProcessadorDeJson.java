@@ -12,6 +12,7 @@ import br.com.alura.comex.Pedido;
 public class ProcessadorDeJson {
 
 	static public List<Pedido> leitorJson(String nomeArquivo) throws Exception {
+		
 		URL recursoJson = ClassLoader.getSystemResource(nomeArquivo + ".json");
 
 		ObjectMapper objectMapper = new ObjectMapper();
