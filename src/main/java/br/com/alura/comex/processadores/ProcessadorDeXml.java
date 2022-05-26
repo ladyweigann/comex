@@ -1,5 +1,7 @@
 package br.com.alura.comex.processadores;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
@@ -9,9 +11,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.alura.comex.Pedido;
 
-public class ProcessadorDeXml {
+public class ProcessadorDeXml implements Processador{
 
-	static public List<Pedido> leitorXml(String nomeArquivo) throws Exception {
+	@Override
+	public List<Pedido> leitorArquivo(String nomeArquivo) throws IOException, URISyntaxException {
 		
 		URL recursoXml = ClassLoader.getSystemResource(nomeArquivo + ".xml");
 

@@ -28,9 +28,9 @@ public class Menu {
 
 		System.out.println(
 				"Escolha o tipo de relatório que será impresso:\n1 - Relatório Sintético;\n2 - Relatório de Clientes Fiéis;\n3 - Relatório de Vendas por Categoria");
-		opt = sc.next();
+		int opt2 = sc.nextInt();
 
-		TipoDeRelatorio.getTipoDeRelatorio(opt, pedidos);
+		TipoDeRelatorio.getTipoDeRelatorio(opt2, pedidos);
 
 		sc.close();
 	}

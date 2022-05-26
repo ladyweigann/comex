@@ -13,9 +13,10 @@ import java.util.Scanner;
 
 import br.com.alura.comex.Pedido;
 
-public class ProcessadorDeCsv {
+public class ProcessadorDeCsv implements Processador{
 
-	static public List<Pedido> leitorCSV(String nomeArquivo) throws IOException, URISyntaxException{
+	@Override
+	public List<Pedido> leitorArquivo(String nomeArquivo) throws IOException, URISyntaxException{
 		
 		List<Pedido> pedidos = new ArrayList<>();
 		
@@ -56,6 +57,7 @@ public class ProcessadorDeCsv {
 		
 	    return pedidos;
 	}
+
 	
 
 }
