@@ -6,24 +6,24 @@ import br.com.alura.comex.Pedido;
 
 public class TipoDeProcessador {
 
-	public static List<Pedido> getTipoDeProcessador(int opt, String nomeArquivo, List<Pedido> pedidos)
+	public static List<Pedido> getTipoDeProcessador(String opt, String nomeArquivo, List<Pedido> pedidos)
 			throws Exception {
-		
+		opt.toUpperCase();
 		switch (opt) {
-		case 1: {
+		case "CSV": {
 			pedidos = ProcessadorDeCsv.leitorCSV(nomeArquivo);
 			break;
 		}
-		case 2: {
+		case "JSON": {
 			pedidos = ProcessadorDeJson.leitorJson(nomeArquivo);
 			break;
 		}
-		case 3: {
+		case "XML": {
 			pedidos = ProcessadorDeXml.leitorXml(nomeArquivo);
 			break;
 		}
 		default:
-			System.out.println("Opção inválida");
+			throw new IllegalArgumentException("Opção inválida");
 		}
 		return pedidos;
 	}

@@ -16,7 +16,7 @@ public class Menu {
 		
 		System.out.println(
 				"Bem-vindo ao Comex\n\nDigite a opção correspondente ao tipo de arquivo que será lido: \n1 - CSV;\n2 - JSON;\n3 - XML");
-		int opt = sc.nextInt();
+		String opt = sc.next();
 		
 		System.out.println("Digite o nome do seu arquivo (sem extensão)");
 		
@@ -28,7 +28,7 @@ public class Menu {
 
 		System.out.println(
 				"Escolha o tipo de relatório que será impresso:\n1 - Relatório Sintético;\n2 - Relatório de Clientes Fiéis;\n3 - Relatório de Vendas por Categoria");
-		opt = sc.nextInt();
+		opt = sc.next();
 
 		TipoDeRelatorio.getTipoDeRelatorio(opt, pedidos);
 
