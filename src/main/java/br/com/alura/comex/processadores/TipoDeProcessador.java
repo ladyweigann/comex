@@ -6,7 +6,7 @@ import br.com.alura.comex.Pedido;
 
 public class TipoDeProcessador {
 
-	public static List<Pedido> getTipoDeProcessador(String opt, String nomeArquivo, List<Pedido> pedidos)
+	public static List<Pedido> getTipoDeProcessador(String opt, String nomeArquivo)
 			throws Exception {
 		
 		 CategoriasProcessadores categoria = CategoriasProcessadores.valueOf(opt.toUpperCase());

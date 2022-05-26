@@ -4,3 +4,8 @@
 *.ipr
 
 target/
+bin/
+.classpath
+.project
+.settings
+

@@ -1,7 +1,6 @@
 
 package br.com.alura.comex;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,16 +20,14 @@ public class Menu {
 		System.out.println("Digite o nome do seu arquivo (sem extensão)");
 		
 		String nomeArquivo = sc.next();
-		
-		List<Pedido> pedidos = new ArrayList<>();
 
-		pedidos = TipoDeProcessador.getTipoDeProcessador(opt, nomeArquivo, pedidos);
+		List<Pedido> pedidos = TipoDeProcessador.getTipoDeProcessador(opt, nomeArquivo);
 
 		System.out.println(
 				"Escolha o tipo de relatório que será impresso:\n1 - Relatório Sintético;\n2 - Relatório de Clientes Fiéis;\n3 - Relatório de Vendas por Categoria");
 		int opt2 = sc.nextInt();
 
-		TipoDeRelatorio.getTipoDeRelatorio(opt2, pedidos);
+		TipoDeRelatorio.imprimirRelatorioEscolhido(opt2, pedidos);
 
 		sc.close();
 	}

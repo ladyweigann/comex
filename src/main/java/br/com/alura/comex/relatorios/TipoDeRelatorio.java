@@ -7,7 +7,7 @@ import br.com.alura.comex.Pedido;
 public class TipoDeRelatorio {
 
 
-	public static void getTipoDeRelatorio(int opt, List<Pedido> pedidos) {
+	public static void imprimirRelatorioEscolhido(int opt, List<Pedido> pedidos) {
 		
 		switch (opt) {
 		case 1: {
