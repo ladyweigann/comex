@@ -23,6 +23,10 @@ public class TipoDeRelatorio {
 			RelatorioVendasCategoria.relatorioVendasPorCategoria(pedidos);
 			break;
 		}
+		case 4: {
+			RelatorioProdutosMaisVendidos.relatorioProdutosMaisVendidos(pedidos);
+			break;
+		}
 		default:
 			System.out.println("Opção inválida");
 		}

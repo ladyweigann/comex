@@ -18,11 +18,13 @@ public class RelatorioVendasCategoria {
 		Map<String, List<Pedido>> categorias = pedidos.stream()
 				.collect(Collectors.groupingBy(Pedido::getCategoria, TreeMap::new, Collectors.toList()));
 		
-		categorias.forEach((categoria, pedido) -> {
-			System.out.printf("\nCATEGORIA: " + categoria 
+		categorias
+			.forEach((categoria, pedido) -> {
+			System.out.printf("\nCATEGORIA: " + categoria
 					+ "\nQUANTIDADE VENDIDA: " + pedido.stream().mapToInt(Pedido::getQuantidade).sum()
 					+ "\nMONTANTE: %s\n", formatar.formatarSaidaDeValores(pedido.stream().map(Pedido::getValorTotal)
 					.reduce(BigDecimal.ZERO, BigDecimal::add)));
+			
 		});
 		
 	}

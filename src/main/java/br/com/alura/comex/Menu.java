@@ -24,7 +24,7 @@ public class Menu {
 		List<Pedido> pedidos = TipoDeProcessador.getTipoDeProcessador(opt, nomeArquivo);
 
 		System.out.println(
-				"Escolha o tipo de relatório que será impresso:\n1 - Relatório Sintético;\n2 - Relatório de Clientes Fiéis;\n3 - Relatório de Vendas por Categoria");
+				"Escolha o tipo de relatório que será impresso:\n1 - Relatório Sintético;\n2 - Relatório de Clientes Fiéis;\n3 - Relatório de Vendas por Categoria;\n4 - Relatório de Produtos mais Vendidos");
 		int opt2 = sc.nextInt();
 
 		TipoDeRelatorio.imprimirRelatorioEscolhido(opt2, pedidos);

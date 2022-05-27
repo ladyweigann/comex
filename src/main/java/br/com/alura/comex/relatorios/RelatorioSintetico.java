@@ -25,36 +25,41 @@ public class RelatorioSintetico {
 			throw new IllegalArgumentException("A lista não pode estar vazia");
 		}
 		
-		this.montanteDeVendas = pedidos.stream().map(Pedido::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_DOWN);
-		this.totalDeProdutosVendidos = pedidos.stream().mapToInt(Pedido::getQuantidade).sum();
-		this.totalDePedidosRealizados = pedidos.size();
-		this.categoriasProcessadas = pedidos.stream().map(Pedido::getCategoria).distinct().count();
-		this.pedidoMaisBarato = pedidos.stream().min(Comparator.comparing(Pedido::getValorTotal)).orElseThrow(() -> new IllegalStateException("A lista não pode estar vazia"));
-		this.pedidoMaisCaro = pedidos.stream().max(Comparator.comparing(Pedido::getValorTotal)).orElseThrow(() -> new IllegalStateException("A lista não pode estar vazia"));
+		this.montanteDeVendas = getMontanteDeVendas(pedidos);
+		this.totalDeProdutosVendidos = getTotalDeProdutosVendidos(pedidos);
+		this.totalDePedidosRealizados = getTotalDePedidosRealizados(pedidos);
+		this.categoriasProcessadas = getCategoriasProcessadas(pedidos);
+		this.pedidoMaisBarato = getPedidoMaisBarato(pedidos);
+		this.pedidoMaisCaro = getPedidoMaisCaro(pedidos);
 
 	}
 	
-	public int getTotalDeProdutosVendidos() {
-		return totalDeProdutosVendidos;
+	public int getTotalDeProdutosVendidos(List<Pedido> pedidos) {
+		return pedidos.stream().mapToInt(Pedido::getQuantidade).sum();
 	}
 
-	public int getTotalDePedidosRealizados() {
-		return totalDePedidosRealizados;
+	public int getTotalDePedidosRealizados(List<Pedido> pedidos) {
+		return pedidos.size();
 	}
 
-	public BigDecimal getMontanteDeVendas() {
-		return montanteDeVendas;
+	public BigDecimal getMontanteDeVendas(List<Pedido> pedidos) {
+		return pedidos.stream().map(Pedido::getValorTotal)
+				.reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_DOWN);
 	}
 
-	public long getCategoriasProcessadas() {
-		return categoriasProcessadas;
+	public long getCategoriasProcessadas(List<Pedido> pedidos) {
+		return pedidos.stream().map(Pedido::getCategoria).distinct().count();
 	}
 
-	public Pedido getPedidoMaisBarato() {
-		return pedidoMaisBarato;
+	public Pedido getPedidoMaisBarato(List<Pedido> pedidos) {
+		return pedidos.stream()
+				.min(Comparator.comparing(Pedido::getValorTotal))
+				.orElseThrow(() -> new IllegalStateException("A lista não pode estar vazia"));
 	}
-	public Pedido getPedidoMaisCaro() {
-		return pedidoMaisCaro;
+	public Pedido getPedidoMaisCaro(List<Pedido> pedidos) {
+		return pedidos.stream()
+				.max(Comparator.comparing(Pedido::getValorTotal))
+				.orElseThrow(() -> new IllegalStateException("A lista não pode estar vazia"));
 	}
 
 	
