@@ -33,7 +33,7 @@ class RelatorioVendasCategoriaTest {
 	}
 
 	@Test
-	void geracaoDeRelatorioComUmUnicoPedido() {
+	void geracaoDeRelatorioComUmUnicoPedidoDeveExibirUmaVez() {
 		Pedido pedido = new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30));
 
@@ -46,7 +46,7 @@ class RelatorioVendasCategoriaTest {
 	}
 	
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDaMesmaCategoria() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDaMesmaCategoriaDeveExibirUmaVez() {
 		
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30)));
@@ -64,7 +64,7 @@ class RelatorioVendasCategoriaTest {
 	}
 	
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeCategoriasDiferentes() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDeCategoriasDiferentesDeveExibirAQuantidadeDeCategorias() {
 		
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30)));

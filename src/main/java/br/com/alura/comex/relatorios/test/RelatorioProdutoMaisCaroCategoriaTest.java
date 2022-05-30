@@ -32,7 +32,7 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 	}
 
 	@Test
-	void geracaoDeRelatorioComUmUnicoPedido() {
+	void geracaoDeRelatorioComUmUnicoPedidoVaiExibirUmaVezNoConsole() {
 		Pedido pedido = new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30));
 
@@ -45,7 +45,7 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 	}
 
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeUmaMesmaCategoria() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDeUmaMesmaCategoriaVaiExibirUmaVezNoConsole() {
 
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("INFORMÁTICA", "Mouse", "Larissa", new BigDecimal("79"), 1, LocalDate.of(2022, 5, 30)));
@@ -58,7 +58,7 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 	}
 
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeVariasCategorias() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDeVariasCategoriasVaiExibirAQuantidadeDeCategoriasDiferentes() {
 
 		pedidos.add(
 				new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, LocalDate.of(2022, 5, 30)));
