@@ -9,9 +9,10 @@ import java.util.stream.Collectors;
 import br.com.alura.comex.FormatarSaidaDeValores;
 import br.com.alura.comex.Pedido;
 
-public class RelatorioVendasCategoria {
+public class RelatorioVendasCategoria extends Relatorio{
 
-	public static void relatorioVendasPorCategoria(List<Pedido> pedidos) {
+	@Override
+	public void imprimirRelatorio(List<Pedido> pedidos) {
 		
 		FormatarSaidaDeValores formatar = new FormatarSaidaDeValores();
 		
@@ -28,6 +29,7 @@ public class RelatorioVendasCategoria {
 		});
 		
 	}
+
 	
 	
 }

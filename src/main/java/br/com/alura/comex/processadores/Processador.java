@@ -11,4 +11,5 @@ public interface Processador {
 	List<Pedido> leitorArquivo(String nomeArquivo) throws IOException, URISyntaxException;
 	
 	
+	
 }
