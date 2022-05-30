@@ -6,7 +6,6 @@ import br.com.alura.comex.Pedido;
 
 public class TipoDeRelatorio {
 
-
 	public static void imprimirRelatorioEscolhido(int opt, List<Pedido> pedidos) {
 		Relatorio relatorio;
 		switch (opt) {
@@ -21,15 +20,17 @@ public class TipoDeRelatorio {
 		}
 		case 3: {
 			relatorio = new RelatorioVendasCategoria();
-			relatorio.imprimirRelatorio(pedidos);
+			relatorio.imprimirRelatorio(pedidos, System.out::println);
 			break;
 		}
 		case 4: {
-			RelatorioProdutosMaisVendidos.relatorioProdutosMaisVendidos(pedidos);
+			relatorio = new RelatorioProdutosMaisVendidos();
+			relatorio.imprimirRelatorio(pedidos, System.out::println);
 			break;
 		}
 		case 5: {
-			RelatorioProdutoMaisCaroCategoria.relatorioProdutoMaisCaroCategoria(pedidos);
+			relatorio = new RelatorioProdutoMaisCaroCategoria();
+			relatorio.imprimirRelatorio(pedidos, System.out::println);
 			break;
 		}
 		default:

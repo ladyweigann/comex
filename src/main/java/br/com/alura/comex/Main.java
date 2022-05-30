@@ -2,12 +2,10 @@ package br.com.alura.comex;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
-    	
-    	Menu.exibirMenu();
-    	
-       
-    }
-    
-    
+	public static void main(String[] args) throws Exception {
+
+		Menu.exibirMenu();
+
+	}
+
 }

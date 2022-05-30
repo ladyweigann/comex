@@ -12,23 +12,23 @@ import org.mockito.Mockito;
 
 import br.com.alura.comex.Pedido;
 import br.com.alura.comex.relatorios.Relatorio;
-import br.com.alura.comex.relatorios.RelatorioVendasCategoria;
+import br.com.alura.comex.relatorios.RelatorioProdutosMaisVendidos;
 
-class RelatorioVendasCategoriaTest {
+class RelatorioProdutosMaisVendidosTest {
 
 	List<Pedido> pedidos = new ArrayList<>();
-	Relatorio relatorioVendasCategoria = new RelatorioVendasCategoria();
+	Relatorio relatorio = new RelatorioProdutosMaisVendidos();
 
 	private Consumer imprimirRelatorio() {
 		Consumer consumer = Mockito.mock(Consumer.class);
-		relatorioVendasCategoria.imprimirRelatorio(pedidos, consumer);
+		relatorio.imprimirRelatorio(pedidos, consumer);
 		return consumer;
 	}
 	
 	@Test
 	void geracaoDeRelatorioParaUmaListaDePedidosVaziaDeveRetornarUmaExcecao() {
 		Assertions.assertThrows(IllegalArgumentException.class,
-				() -> relatorioVendasCategoria.imprimirRelatorio(pedidos, null));
+				() -> relatorio.imprimirRelatorio(pedidos, null));
 
 	}
 
@@ -46,25 +46,21 @@ class RelatorioVendasCategoriaTest {
 	}
 	
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDaMesmaCategoria() {
+	void geracaoDeRelatorioComDoisOuMaisPedidos() {
 		
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("INFORMÁTICA", "Mouse", "Larissa", new BigDecimal("79"), 1,
 				LocalDate.of(2022, 5, 30)));
-		pedidos.add(new Pedido("INFORMÁTICA", "Teclado Mecanico", "Larissa", new BigDecimal("269"), 1,
-				LocalDate.of(2022, 5, 30)));
-		pedidos.add(new Pedido("INFORMÁTICA", "Monitor Wide", "Larissa", new BigDecimal("1798"), 1,
-				LocalDate.of(2022, 5, 30)));
 
 		Consumer consumer = imprimirRelatorio();
 		
-		Mockito.verify(consumer, Mockito.times(1)).accept(Mockito.any());
+		Mockito.verify(consumer, Mockito.times(2)).accept(Mockito.any());
 
 	}
 	
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeCategoriasDiferentes() {
+	void geracaoDeRelatorioComTresOuMaisPedidos() {
 		
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30)));
@@ -74,13 +70,16 @@ class RelatorioVendasCategoriaTest {
 				LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("CASA", "Conjunto de Cama King Size", "Larissa", new BigDecimal("459"), 1,
 				LocalDate.of(2022, 5, 30)));
+		pedidos.add(new Pedido("CASA", "Conjunto de Cama King Size", "Carla", new BigDecimal("459"), 1,
+				LocalDate.of(2022, 5, 30)));
+		pedidos.add(new Pedido("CASA", "Conjunto de Cama King Size", "Maria", new BigDecimal("459"), 1,
+				LocalDate.of(2022, 5, 30)));
 
 		Consumer consumer = imprimirRelatorio();
 
-		Mockito.verify(consumer, Mockito.times(4)).accept(Mockito.any());
+		Mockito.verify(consumer, Mockito.times(3)).accept(Mockito.any());
 
 	}
 
-	
 
 }
