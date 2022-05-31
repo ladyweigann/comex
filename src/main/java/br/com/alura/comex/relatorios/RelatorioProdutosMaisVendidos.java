@@ -43,6 +43,7 @@ public class RelatorioProdutosMaisVendidos extends Relatorio {
 		});
 	}
 	
+	
 public class ProdutosMaisVendidos {
 		
 		private String produto;

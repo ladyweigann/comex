@@ -95,6 +95,7 @@ class RelatorioVendasCategoriaTest {
 		Assertions.assertEquals(2, resultado.get(1).getQuantidadeVendida());
 		Assertions.assertEquals(new BigDecimal("11998.00"), resultado.get(1).getMontante());
 		
+		
 		Mockito.verify(consumer, Mockito.times(4)).accept(Mockito.any());
 
 	}

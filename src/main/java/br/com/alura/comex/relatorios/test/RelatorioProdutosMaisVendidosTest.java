@@ -89,6 +89,7 @@ class RelatorioProdutosMaisVendidosTest {
 		
 		List<ProdutosMaisVendidos> resultado = relatorio.getProdutosMaisVendidos();
 		
+		
 		Assertions.assertEquals("iPhone 12 Pro Max", resultado.get(2).getProduto());
 		Assertions.assertEquals("O Colecionador de Lagrimas", resultado.get(1).getProduto());
 		Assertions.assertEquals("Conjunto de Cama King Size", resultado.get(0).getProduto());
