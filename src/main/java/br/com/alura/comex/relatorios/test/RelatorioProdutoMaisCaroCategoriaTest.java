@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import br.com.alura.comex.Pedido;
-import br.com.alura.comex.relatorios.Relatorio;
 import br.com.alura.comex.relatorios.RelatorioProdutoMaisCaroCategoria;
+import br.com.alura.comex.relatorios.RelatorioProdutoMaisCaroCategoria.ProdutoMaisCaroCategoria;
 
 class RelatorioProdutoMaisCaroCategoriaTest {
 
 	List<Pedido> pedidos = new ArrayList<>();
-	Relatorio relatorio = new RelatorioProdutoMaisCaroCategoria();
+	RelatorioProdutoMaisCaroCategoria relatorio = new RelatorioProdutoMaisCaroCategoria();
 
 	private Consumer imprimirRelatorio() {
 		Consumer consumer = Mockito.mock(Consumer.class);
@@ -32,20 +32,27 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 	}
 
 	@Test
-	void geracaoDeRelatorioComUmUnicoPedidoVaiExibirUmaVezNoConsole() {
+	void geracaoDeRelatorioComUmUnicoPedido() {
 		Pedido pedido = new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1,
 				LocalDate.of(2022, 5, 30));
 
 		pedidos = List.of(pedido);
 
 		Consumer consumer = imprimirRelatorio();
+		
+		List<ProdutoMaisCaroCategoria> resultado = relatorio.getVendasPorCategoria();
+		
+		Assertions.assertEquals("INFORMÁTICA", resultado.get(0).getCategoria());
+		Assertions.assertEquals("Headphone", resultado.get(0).getProduto());
+		Assertions.assertEquals(new BigDecimal("150"), resultado.get(0).getPreco());
+		
 
 		Mockito.verify(consumer, Mockito.times(1)).accept(Mockito.any());
 
 	}
 
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeUmaMesmaCategoriaVaiExibirUmaVezNoConsole() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDeUmaMesmaCategoria() {
 
 		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("INFORMÁTICA", "Mouse", "Larissa", new BigDecimal("79"), 1, LocalDate.of(2022, 5, 30)));
@@ -53,12 +60,18 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 		
 		Consumer consumer = imprimirRelatorio();
 
+		List<ProdutoMaisCaroCategoria> resultado = relatorio.getVendasPorCategoria();
+		
+		Assertions.assertEquals("INFORMÁTICA", resultado.get(0).getCategoria());
+		Assertions.assertEquals("Monitor LED", resultado.get(0).getProduto());
+		Assertions.assertEquals(new BigDecimal("1959"), resultado.get(0).getPreco());
+		
 		Mockito.verify(consumer, Mockito.times(1)).accept(Mockito.any());
 
 	}
 
 	@Test
-	void geracaoDeRelatorioComMaisDeUmPedidoDeVariasCategoriasVaiExibirAQuantidadeDeCategoriasDiferentes() {
+	void geracaoDeRelatorioComMaisDeUmPedidoDeVariasCategorias() {
 
 		pedidos.add(
 				new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, LocalDate.of(2022, 5, 30)));
@@ -76,6 +89,24 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 		
 		Consumer consumer = imprimirRelatorio();
 
+		List<ProdutoMaisCaroCategoria> resultado = relatorio.getVendasPorCategoria();
+		
+		Assertions.assertEquals("CASA", resultado.get(0).getCategoria());
+		Assertions.assertEquals("Conjunto de Cama King Size", resultado.get(0).getProduto());
+		Assertions.assertEquals(new BigDecimal("459"), resultado.get(0).getPreco());
+		
+		Assertions.assertEquals("CELULARES", resultado.get(1).getCategoria());
+		Assertions.assertEquals("iPhone 12 Pro Max", resultado.get(1).getProduto());
+		Assertions.assertEquals(new BigDecimal("5999"), resultado.get(1).getPreco());
+		
+		Assertions.assertEquals("INFORMÁTICA", resultado.get(2).getCategoria());
+		Assertions.assertEquals("Headphone", resultado.get(2).getProduto());
+		Assertions.assertEquals(new BigDecimal("150"), resultado.get(2).getPreco());
+		
+		Assertions.assertEquals("LIVROS", resultado.get(3).getCategoria());
+		Assertions.assertEquals("O Colecionador de Lagrimas", resultado.get(3).getProduto());
+		Assertions.assertEquals(new BigDecimal("80"), resultado.get(3).getPreco());
+		
 		Mockito.verify(consumer, Mockito.times(4)).accept(Mockito.any());
 
 	}

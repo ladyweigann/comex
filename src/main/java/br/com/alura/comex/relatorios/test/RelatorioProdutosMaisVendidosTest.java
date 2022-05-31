@@ -11,10 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import br.com.alura.comex.Pedido;
-import br.com.alura.comex.relatorios.Relatorio;
 import br.com.alura.comex.relatorios.RelatorioProdutosMaisVendidos;
 import br.com.alura.comex.relatorios.RelatorioProdutosMaisVendidos.ProdutosMaisVendidos;
-import br.com.alura.comex.relatorios.RelatorioVendasCategoria.VendasCategoria;
 
 class RelatorioProdutosMaisVendidosTest {
 
