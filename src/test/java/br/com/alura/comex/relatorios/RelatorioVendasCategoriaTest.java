@@ -1,4 +1,4 @@
-package br.com.alura.comex.relatorios.test;
+package br.com.alura.comex.relatorios;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
