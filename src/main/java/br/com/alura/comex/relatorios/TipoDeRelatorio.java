@@ -35,6 +35,11 @@ public class TipoDeRelatorio {
 			relatorio.imprimirRelatorio(pedidos, System.out::println);
 			break;
 		}
+		case 6: {
+			relatorio = new RelatorioClientesMaisLucrativos();
+			relatorio.imprimirRelatorio(pedidos, System.out::println);
+			break;
+		}
 		default:
 			System.out.println("Opção inválida");
 		}
