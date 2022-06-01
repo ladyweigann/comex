@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import br.com.alura.comex.Pedido;
-import br.com.alura.comex.relatorios.RelatorioProdutoMaisCaroCategoria;
 import br.com.alura.comex.relatorios.RelatorioProdutoMaisCaroCategoria.ProdutoMaisCaroCategoria;
 
 class RelatorioProdutoMaisCaroCategoriaTest {
 
 	List<Pedido> pedidos = new ArrayList<>();
+	
 	RelatorioProdutoMaisCaroCategoria relatorio = new RelatorioProdutoMaisCaroCategoria();
 
 	private Consumer imprimirRelatorio() {
@@ -73,8 +73,8 @@ class RelatorioProdutoMaisCaroCategoriaTest {
 	@Test
 	void geracaoDeRelatorioComMaisDeUmPedidoDeVariasCategorias() {
 
-		pedidos.add(
-				new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, LocalDate.of(2022, 5, 30)));
+		pedidos.add(new Pedido("INFORMÁTICA", "Headphone", "Larissa", new BigDecimal("150"), 1, 
+				LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("LIVROS", "O Colecionador de Lagrimas", "Larissa", new BigDecimal("80"), 1,
 				LocalDate.of(2022, 5, 30)));
 		pedidos.add(new Pedido("CELULARES", "iPhone 12 Pro Max", "Larissa", new BigDecimal("5999"), 1,

@@ -8,6 +8,7 @@ public class TipoDeRelatorio {
 
 	public static void imprimirRelatorioEscolhido(int opt, List<Pedido> pedidos) {
 		Relatorio relatorio;
+		
 		switch (opt) {
 		case 1: {
 			RelatorioSintetico relatorioSintetico = new RelatorioSintetico(pedidos);
@@ -15,7 +16,8 @@ public class TipoDeRelatorio {
 			break;
 		}
 		case 2: {
-			RelatorioClientesFieis.relatorioClientesFieis(pedidos);
+			relatorio = new RelatorioClientesFieis();
+			relatorio.imprimirRelatorio(pedidos, System.out::println);
 			break;
 		}
 		case 3: {
