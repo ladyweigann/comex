@@ -38,7 +38,7 @@ public class MainProdutoDao {
 
         List<Produto> indisp = produtoDao.listarIndisponiveis();
         indisp.forEach(p -> System.out.println(p.getNome()));
-        
+
         em.getTransaction().commit();
         em.close();
     }

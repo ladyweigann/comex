@@ -12,7 +12,7 @@ public class Categoria {
     private String nome;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.ATIVA;
+    private StatusCategoria status = StatusCategoria.ATIVA;
 
     public Categoria(String nome) {
         this.nome = nome;
@@ -29,15 +29,15 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public Status getStatus() {
+    public StatusCategoria getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusCategoria status) {
         this.status = status;
     }
 
     public void setStatusInativa() {
-        this.status = Status.INATIVA;
+        this.status = StatusCategoria.INATIVA;
     }
 }

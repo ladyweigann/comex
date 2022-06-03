@@ -10,23 +10,27 @@ import java.util.List;
 public class MainCategoriaDao {
 
     public static void main(String[] args) {
-        Categoria celulares = new Categoria("Celulares");
-        Categoria informatica = new Categoria("Informatica");
-        Categoria livros = new Categoria("Livros");
+        Categoria categoria1 = new Categoria("Celulares");
+        Categoria categoria2 = new Categoria("Informatica");
+        Categoria categoria3 = new Categoria("Livros");
 
         EntityManager em = JPAUtil.getEntityManager();
         CategoriaDao categoriaDao = new CategoriaDao(em);
 
         em.getTransaction().begin();
 
-        celulares.setStatusInativa();
+        categoria1.setStatusInativa();
 
-        categoriaDao.cadastrar(celulares);
-        categoriaDao.cadastrar(informatica);
-        categoriaDao.cadastrar(livros);
+        categoriaDao.cadastrar(categoria1);
+        categoriaDao.cadastrar(categoria2);
+        categoriaDao.cadastrar(categoria3);
 
-        List<Categoria> todos = categoriaDao.listarTodasInativas();
+        categoria2.setNome("Casa");
+        categoriaDao.atualizar(categoria2);
+
+        List<Categoria> todos = categoriaDao.listarTodas();
         todos.forEach(p -> System.out.println(p.getNome()));
+
         em.getTransaction().commit();
         em.close();
     }
