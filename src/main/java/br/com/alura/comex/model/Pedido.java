@@ -5,6 +5,7 @@ import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,8 +22,8 @@ public class Pedido {
     private BigDecimal desconto;
     private TipoDeDesconto tipoDeDesconto;
 
-//    @OneToOne
-//    private List<ItemDePedido> itemDePedidos;
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemDePedido> itens = new ArrayList<>();
 
     public Pedido(Cliente cliente, BigDecimal desconto, TipoDeDesconto tipoDeDesconto) {
         this.cliente = cliente;
@@ -32,6 +33,11 @@ public class Pedido {
 
     public Pedido() {
 
+    }
+
+    public void adicionarItem(ItemDePedido item) {
+        item.setPedido(this);
+        this.itens.add(item);
     }
 
     public BigDecimal getDesconto() {
@@ -58,11 +64,11 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-//    public List<ItemDePedido> getItemDePedidos() {
-//        return itemDePedidos;
-//    }
-//
-//    public void setItemDePedidos(List<ItemDePedido> itemDePedidos) {
-//        this.itemDePedidos = itemDePedidos;
-//    }
+    public List<ItemDePedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemDePedido> itens) {
+        this.itens = itens;
+    }
 }
