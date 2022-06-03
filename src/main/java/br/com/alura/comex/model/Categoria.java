@@ -12,17 +12,15 @@ public class Categoria {
     private String nome;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ATIVA;
 
     public Categoria(String nome) {
         this.nome = nome;
-        this.status = Status.ATIVA; //Ativa por padrão
     }
 
     public Categoria() {
 
     }
-
     public String getNome() {
         return nome;
     }
@@ -37,5 +35,9 @@ public class Categoria {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setStatusInativa() {
+        this.status = Status.INATIVA;
     }
 }
