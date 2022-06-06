@@ -19,9 +19,9 @@ public class ItemDePedido {
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
     private BigDecimal desconto;
-    private TipoDeDesconto tipoDeDesconto;
+    private TipoDescontoPedido tipoDeDesconto;
 
-    public ItemDePedido(int quantidade, Produto produto, Pedido pedido, BigDecimal desconto, TipoDeDesconto tipoDeDesconto) {
+    public ItemDePedido(int quantidade, Produto produto, Pedido pedido, BigDecimal desconto, TipoDescontoPedido tipoDeDesconto) {
         this.quantidade = quantidade;
         this.produto = produto;
         this.pedido = pedido;
@@ -29,6 +29,8 @@ public class ItemDePedido {
         this.desconto = desconto;
         this.tipoDeDesconto = tipoDeDesconto;
     }
+
+
 
     public ItemDePedido() {
 
@@ -66,11 +68,11 @@ public class ItemDePedido {
         this.desconto = desconto;
     }
 
-    public TipoDeDesconto getTipoDeDesconto() {
+    public TipoDescontoPedido getTipoDeDesconto() {
         return tipoDeDesconto;
     }
 
-    public void setTipoDeDesconto(TipoDeDesconto tipoDeDesconto) {
+    public void setTipoDeDesconto(TipoDescontoPedido tipoDeDesconto) {
         this.tipoDeDesconto = tipoDeDesconto;
     }
 }

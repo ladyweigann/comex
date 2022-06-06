@@ -41,5 +41,7 @@ public class MainProdutoDao {
 
         em.getTransaction().commit();
         em.close();
+
+
     }
 }

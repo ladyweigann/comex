@@ -1,8 +1,6 @@
 package br.com.alura.comex.model;
 
-public enum TipoDeDesconto {
+public enum TipoDescontoPedido {
     FIDELIDADE,
-    QUANTIDADE,
-    PROMOCAO,
     NENHUM;
 }

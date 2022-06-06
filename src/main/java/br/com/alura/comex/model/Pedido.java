@@ -1,10 +1,8 @@
 package br.com.alura.comex.model;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +13,25 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate data = LocalDate.now();
+
+    private LocalDateTime data = LocalDateTime.now();
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private BigDecimal desconto;
-    private TipoDeDesconto tipoDeDesconto;
+    private TipoDescontoPedido tipoDeDesconto;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemDePedido> itens = new ArrayList<>();
 
-    public Pedido(Cliente cliente, BigDecimal desconto, TipoDeDesconto tipoDeDesconto) {
+    public Pedido(Cliente cliente, BigDecimal desconto, TipoDescontoPedido tipoDeDesconto) {
         this.cliente = cliente;
         this.desconto = desconto;
         this.tipoDeDesconto = tipoDeDesconto;
+    }
+
+    public Pedido(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Pedido() {
@@ -48,11 +51,11 @@ public class Pedido {
         this.desconto = desconto;
     }
 
-    public TipoDeDesconto getTipoDeDesconto() {
+    public TipoDescontoPedido getTipoDeDesconto() {
         return tipoDeDesconto;
     }
 
-    public void setTipoDeDesconto(TipoDeDesconto tipoDeDesconto) {
+    public void setTipoDeDesconto(TipoDescontoPedido tipoDeDesconto) {
         this.tipoDeDesconto = tipoDeDesconto;
     }
 
