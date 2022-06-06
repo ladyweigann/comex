@@ -1,6 +1,5 @@
 package br.com.alura.comex.dao;
 
-import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.model.Cliente;
 
 import javax.persistence.EntityManager;

@@ -12,10 +12,10 @@ public class ItemDePedido {
     private Long id;
     private BigDecimal precoUnitario;
     private int quantidade;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id")
     private Produto produto;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
     private BigDecimal desconto;

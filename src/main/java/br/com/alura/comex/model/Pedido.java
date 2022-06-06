@@ -15,7 +15,7 @@ public class Pedido {
     private Long id;
 
     private LocalDateTime data = LocalDateTime.now();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private BigDecimal desconto;
