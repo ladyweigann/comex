@@ -1,9 +1,10 @@
 package br.com.alura.comex.model;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
     //Endereço
     private String rua;
     private String numero;

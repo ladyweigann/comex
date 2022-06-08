@@ -19,9 +19,10 @@ public class Pedido {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private BigDecimal desconto;
+    @Column(name = "tipo_desconto")
     private TipoDescontoPedido tipoDeDesconto;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemDePedido> itens = new ArrayList<>();
 
     public Pedido(Cliente cliente, BigDecimal desconto, TipoDescontoPedido tipoDeDesconto) {

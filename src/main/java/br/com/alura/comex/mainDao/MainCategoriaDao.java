@@ -26,7 +26,9 @@ public class MainCategoriaDao {
         categoriaDao.cadastrar(categoria3);
 
         categoria2.setNome("Casa");
+        Categoria categoria4 = new Categoria("Informatica");
         categoriaDao.atualizar(categoria2);
+        categoriaDao.cadastrar(categoria4);
 
         List<Categoria> todos = categoriaDao.listarTodas();
         todos.forEach(p -> System.out.println(p.getNome()));

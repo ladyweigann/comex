@@ -30,7 +30,11 @@ public class ItemDePedido {
         this.tipoDeDesconto = tipoDeDesconto;
     }
 
-
+    public ItemDePedido(int quantidade, Produto produto, Pedido pedido) {
+        this.quantidade = quantidade;
+        this.produto = produto;
+        this.pedido = pedido;
+    }
 
     public ItemDePedido() {
 

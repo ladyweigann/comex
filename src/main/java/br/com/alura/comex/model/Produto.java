@@ -11,7 +11,9 @@ public class Produto {
     private Long id;
     private String nome;
     private String descricao;
+    @Column(name = "preco_unitario")
     private BigDecimal precoUnitario;
+    @Column(name = "quantidade_estoque")
     private int quantidadeEmEstoque;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")

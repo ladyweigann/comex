@@ -1,10 +1,10 @@
 package br.com.alura.comex.vo;
 
-public class RelatorioPedidosPorCliente {
+public class RelatorioPedidosPorClienteVo {
     private String nomeCliente;
     private Long quantidadePedidos;
 
-    public RelatorioPedidosPorCliente(String nomeCliente, Long quantidadePedidos) {
+    public RelatorioPedidosPorClienteVo(String nomeCliente, Long quantidadePedidos) {
         this.nomeCliente = nomeCliente;
         this.quantidadePedidos = quantidadePedidos;
     }
