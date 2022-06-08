@@ -8,7 +8,7 @@ public class RelatorioProdutosMaisVendidosVo {
         this.nomeProduto = nomeProduto;
         this.quantidadeVendida = quantidadeVendida;
     }
-
+    
     public String getNomeProduto() {
         return nomeProduto;
     }
