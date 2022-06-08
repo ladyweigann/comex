@@ -12,7 +12,7 @@ public class Produto {
     private String nome;
     private String descricao;
     @Column(name = "preco_unitario")
-    private BigDecimal precoUnitario;
+    private BigDecimal precoUnitario = BigDecimal.ZERO;
     @Column(name = "quantidade_estoque")
     private int quantidadeEmEstoque;
     @ManyToOne(fetch = FetchType.LAZY)

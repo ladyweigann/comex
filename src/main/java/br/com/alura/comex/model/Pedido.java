@@ -21,9 +21,11 @@ public class Pedido {
     private BigDecimal desconto;
     @Column(name = "tipo_desconto")
     private TipoDescontoPedido tipoDeDesconto;
-
+    @Column(name = "valor_total")
+    private BigDecimal valorTotal = BigDecimal.ZERO;
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemDePedido> itens = new ArrayList<>();
+
 
     public Pedido(Cliente cliente, BigDecimal desconto, TipoDescontoPedido tipoDeDesconto) {
         this.cliente = cliente;
@@ -42,6 +44,7 @@ public class Pedido {
     public void adicionarItem(ItemDePedido item) {
         item.setPedido(this);
         this.itens.add(item);
+        this.valorTotal = this.valorTotal.add(item.getValor());
     }
 
     public BigDecimal getDesconto() {

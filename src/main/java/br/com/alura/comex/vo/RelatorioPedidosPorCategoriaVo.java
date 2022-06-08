@@ -20,6 +20,6 @@ public class RelatorioPedidosPorCategoriaVo {
 
     @Override
     public String toString() {
-        return "Categoria: " + nomeCategoria + ", Quantidade de Pedidos = " + quantidadePedidos;
+        return "Categoria: " + nomeCategoria + " | Quantidade de Pedidos: " + quantidadePedidos;
     }
 }

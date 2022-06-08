@@ -10,7 +10,8 @@ public class ItemDePedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal precoUnitario;
+    @Column(name = "preco_unitario")
+    private BigDecimal precoUnitario = BigDecimal.ZERO;
     private int quantidade;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id")
@@ -19,6 +20,7 @@ public class ItemDePedido {
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
     private BigDecimal desconto;
+    @Column(name = "tipo_desconto")
     private TipoDescontoPedido tipoDeDesconto;
 
     public ItemDePedido(int quantidade, Produto produto, Pedido pedido, BigDecimal desconto, TipoDescontoPedido tipoDeDesconto) {
@@ -34,6 +36,7 @@ public class ItemDePedido {
         this.quantidade = quantidade;
         this.produto = produto;
         this.pedido = pedido;
+        this.precoUnitario = produto.getPrecoUnitario();
     }
 
     public ItemDePedido() {
@@ -78,5 +81,9 @@ public class ItemDePedido {
 
     public void setTipoDeDesconto(TipoDescontoPedido tipoDeDesconto) {
         this.tipoDeDesconto = tipoDeDesconto;
+    }
+
+    public BigDecimal getValor() {
+        return precoUnitario.multiply(new BigDecimal(quantidade));
     }
 }

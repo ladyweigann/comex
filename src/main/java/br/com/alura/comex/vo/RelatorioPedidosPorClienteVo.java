@@ -19,6 +19,6 @@ public class RelatorioPedidosPorClienteVo {
 
     @Override
     public String toString() {
-        return "Cliente: " + nomeCliente + ", Quantidade de Pedidos = " + quantidadePedidos;
+        return "Cliente: " + nomeCliente + " | Quantidade de Pedidos: " + quantidadePedidos;
     }
 }

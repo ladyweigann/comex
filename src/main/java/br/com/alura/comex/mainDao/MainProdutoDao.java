@@ -5,6 +5,7 @@ import br.com.alura.comex.dao.ProdutoDao;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.model.Produto;
 import br.com.alura.comex.util.JPAUtil;
+import br.com.alura.comex.vo.RelatorioProdutosMaisVendidosVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -38,6 +39,9 @@ public class MainProdutoDao {
 
         List<Produto> indisp = produtoDao.listarIndisponiveis();
         indisp.forEach(p -> System.out.println(p.getNome()));
+
+        List<RelatorioProdutosMaisVendidosVo> maisVendidos = produtoDao.produtosMaisVendidos();
+        maisVendidos.forEach(System.out::println);
 
         em.getTransaction().commit();
         em.close();
