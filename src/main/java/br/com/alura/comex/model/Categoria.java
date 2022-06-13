@@ -22,6 +22,9 @@ public class Categoria {
 
     }
 
+    public Long getId() {
+        return id;
+    }
     public String getNome() {
         return nome;
     }
@@ -33,6 +36,8 @@ public class Categoria {
     public StatusCategoria getStatus() {
         return status;
     }
+
+
 
     public void setStatus(StatusCategoria status) {
         this.status = status;
