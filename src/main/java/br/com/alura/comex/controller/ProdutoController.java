@@ -6,6 +6,8 @@ import br.com.alura.comex.model.Produto;
 import br.com.alura.comex.repository.CategoriaRepository;
 import br.com.alura.comex.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -24,12 +26,13 @@ public class ProdutoController {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @GetMapping
-    public List<ProdutoDto> lista() {
-        List<Produto> produtos = produtoRepository.findAllByOrderByNomeAsc();
+    @GetMapping(path="/{numeroPagina}")
+    public List<ProdutoDto> listaPaginada(@PathVariable int numeroPagina) {
+        Pageable pageable = PageRequest.of((numeroPagina-1), 5);
+        List<Produto> produtos = produtoRepository.findAllByOrderByNomeAsc(pageable);
         return ProdutoDto.converter(produtos);
     }
-
+    
     @PostMapping
     @Transactional
     public ResponseEntity<ProdutoDto> cadastrar(@RequestBody @Valid ProdutoForm form, UriComponentsBuilder uriBuilder) {
