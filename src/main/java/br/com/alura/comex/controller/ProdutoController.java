@@ -26,7 +26,7 @@ public class ProdutoController {
 
     @GetMapping
     public List<ProdutoDto> lista() {
-        List<Produto> produtos = produtoRepository.findAll();
+        List<Produto> produtos = produtoRepository.findAllByOrderByNomeAsc();
         return ProdutoDto.converter(produtos);
     }
 

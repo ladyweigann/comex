@@ -50,6 +50,6 @@ public class ProdutoDto {
     }
 
     public static List<ProdutoDto> converter(List<Produto> produtos) {
-        return produtos.stream().map(ProdutoDto::new).sorted(Comparator.comparing(ProdutoDto::getNome)).toList();
+        return produtos.stream().map(ProdutoDto::new).toList();
     }
 }
