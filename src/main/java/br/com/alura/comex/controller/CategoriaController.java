@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -20,12 +21,13 @@ public class CategoriaController {
     private CategoriaRepository categoriaRepository;
 
     @GetMapping
-    public List<Categoria> lista() {
+    public List<CategoriaDto> lista() {
         List<Categoria> categorias = categoriaRepository.findAll();
-        return categorias;
+        return CategoriaDto.converter(categorias);
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity<CategoriaDto> cadastrar(@RequestBody @Valid CategoriaForm form, UriComponentsBuilder uriBuilder) {
         Categoria categoria = form.converter();
         categoriaRepository.save(categoria);
