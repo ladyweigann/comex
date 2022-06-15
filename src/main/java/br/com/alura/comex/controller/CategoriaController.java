@@ -1,6 +1,7 @@
 package br.com.alura.comex.controller;
 
 import br.com.alura.comex.controller.dto.CategoriaDto;
+import br.com.alura.comex.controller.dto.CategoriaProjection;
 import br.com.alura.comex.controller.form.CategoriaForm;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.repository.CategoriaRepository;
@@ -24,6 +25,11 @@ public class CategoriaController {
     public List<CategoriaDto> lista() {
         List<Categoria> categorias = categoriaRepository.findAll();
         return CategoriaDto.converter(categorias);
+    }
+
+    @GetMapping(path = "/pedidos")
+    public List<CategoriaProjection> relatorioPedidosPorCategoria() {
+        return categoriaRepository.findRelatorioPedidosCategoria();
     }
 
     @PostMapping
