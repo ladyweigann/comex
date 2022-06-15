@@ -2,6 +2,7 @@ package br.com.alura.comex.controller;
 
 import br.com.alura.comex.controller.dto.CategoriaDto;
 import br.com.alura.comex.controller.dto.CategoriaProjection;
+import br.com.alura.comex.controller.form.AtualizacaoCategoriaForm;
 import br.com.alura.comex.controller.form.CategoriaForm;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.repository.CategoriaRepository;
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/categorias")
@@ -22,12 +24,19 @@ public class CategoriaController {
     private CategoriaRepository categoriaRepository;
 
     @GetMapping
-    public List<CategoriaDto> lista() {
+    public List<CategoriaDto> listarTodos() {
         List<Categoria> categorias = categoriaRepository.findAll();
         return CategoriaDto.converter(categorias);
     }
-
-    @GetMapping(path = "/pedidos")
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoriaDto> buscarPorId(@PathVariable Long id) {
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
+        if (categoria.isPresent()) {
+            return ResponseEntity.ok(new CategoriaDto(categoria.get()));
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @GetMapping("/pedidos")
     public List<CategoriaProjection> relatorioPedidosPorCategoria() {
         return categoriaRepository.findRelatorioPedidosCategoria();
     }
@@ -41,4 +50,29 @@ public class CategoriaController {
         URI uri = uriBuilder.path("/api/categorias/{id}").buildAndExpand(categoria.getId()).toUri();
         return ResponseEntity.created(uri).body(new CategoriaDto(categoria));
     }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<CategoriaDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoCategoriaForm form) {
+        Optional<Categoria> optional = categoriaRepository.findById(id);
+        if (optional.isPresent()) {
+            Categoria categoria = form.atualizar(id, categoriaRepository);
+            return ResponseEntity.ok(new CategoriaDto(categoria));
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> remover(@PathVariable Long id) {
+        Optional<Categoria> optional = categoriaRepository.findById(id);
+        if (optional.isPresent()) {
+            categoriaRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
 }

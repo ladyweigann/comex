@@ -10,7 +10,7 @@ import java.util.List;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     Categoria findByNome(String nome);
 
-    @Query(value = "SELECT categoria.nome AS nome, sum(item_pedido.quantidade) AS quantidade, sum(pedido.valor_total) AS montanteVendido \n" +
+    @Query(value = "SELECT categoria.nome AS nome, sum(item_pedido.quantidade) AS quantidade, sum((item_pedido.quantidade * item_pedido.preco_unitario)) AS montanteVendido \n" +
             "FROM categoria \n" +
             "INNER JOIN produto ON produto.categoria_id = categoria.id \n" +
             "INNER JOIN item_pedido ON item_pedido.produto_id = produto.id \n" +
