@@ -16,6 +16,7 @@ public class Cliente {
     private Endereco endereco;
 
 
+
     public Cliente(String nome, String cpf, String telefone, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.cpf = cpf;
@@ -27,7 +28,9 @@ public class Cliente {
     public Cliente() {
 
     }
-
+    public Long getId() {
+        return id;
+    }
     public String getNome() {
         return nome;
     }
