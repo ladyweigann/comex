@@ -1,15 +1,12 @@
 package br.com.alura.comex.controller;
 
-import br.com.alura.comex.controller.dto.CategoriaDto;
 import br.com.alura.comex.controller.dto.ClienteDto;
-import br.com.alura.comex.controller.form.AtualizacaoCategoriaForm;
-import br.com.alura.comex.controller.form.AtualizacaoClienteForm;
-import br.com.alura.comex.controller.form.CategoriaForm;
 import br.com.alura.comex.controller.form.ClienteForm;
-import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.model.Cliente;
 import br.com.alura.comex.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -32,7 +29,12 @@ public class ClienteController {
         List<Cliente> clientes = clienteRepository.findAll();
         return ClienteDto.converter(clientes);
     }
-
+    @GetMapping("/pag/{numeroPagina}")
+    public List<ClienteDto> listaPaginada(@PathVariable int numeroPagina) {
+        Pageable pageable = PageRequest.of((numeroPagina-1), 5);
+        List<Cliente> clientes = clienteRepository.findAllByOrderByNomeAsc(pageable);
+        return ClienteDto.converter(clientes);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<ClienteDto> buscarPorId(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
