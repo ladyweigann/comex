@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -27,8 +28,7 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
 
     @GetMapping("/pagina/{numeroPagina}")
-    public Page<ClienteDto> listaPaginada(@PathVariable int numeroPagina) {
-        Pageable pageable = PageRequest.of((numeroPagina-1), 5, Sort.Direction.ASC, "nome");
+    public Page<ClienteDto> listaPaginada(@PageableDefault(sort = "nome", direction = Sort.Direction.ASC, size = 5) Pageable pageable) {
         Page<Cliente> clientes = clienteRepository.findAll(pageable);
         return ClienteDto.converter(clientes);
     }
