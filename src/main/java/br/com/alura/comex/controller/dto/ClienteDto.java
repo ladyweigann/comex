@@ -3,6 +3,7 @@ package br.com.alura.comex.controller.dto;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.model.Cliente;
 import br.com.alura.comex.model.Endereco;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ClienteDto {
         return local;
     }
 
-    public static List<ClienteDto> converter(List<Cliente> clientes) {
-        return clientes.stream().map(ClienteDto::new).toList();
+    public static Page<ClienteDto> converter(Page<Cliente> clientes) {
+        return clientes.map(ClienteDto::new);
     }
 }

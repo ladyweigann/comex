@@ -5,8 +5,10 @@ import br.com.alura.comex.controller.form.ClienteForm;
 import br.com.alura.comex.model.Cliente;
 import br.com.alura.comex.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -24,15 +26,10 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @GetMapping
-    public List<ClienteDto> listarTodos() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        return ClienteDto.converter(clientes);
-    }
-    @GetMapping("/pag/{numeroPagina}")
-    public List<ClienteDto> listaPaginada(@PathVariable int numeroPagina) {
-        Pageable pageable = PageRequest.of((numeroPagina-1), 5);
-        List<Cliente> clientes = clienteRepository.findAllByOrderByNomeAsc(pageable);
+    @GetMapping("/pagina/{numeroPagina}")
+    public Page<ClienteDto> listaPaginada(@PathVariable int numeroPagina) {
+        Pageable pageable = PageRequest.of((numeroPagina-1), 5, Sort.Direction.ASC, "nome");
+        Page<Cliente> clientes = clienteRepository.findAll(pageable);
         return ClienteDto.converter(clientes);
     }
     @GetMapping("/{id}")

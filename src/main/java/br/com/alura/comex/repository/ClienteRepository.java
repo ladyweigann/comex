@@ -8,5 +8,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>, PagingAndSortingRepository<Cliente, Long> {
-    List<Cliente> findAllByOrderByNomeAsc(Pageable pageable);
+
 }

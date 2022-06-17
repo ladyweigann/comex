@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 public interface ProdutoRepository extends PagingAndSortingRepository<Produto, Long>, JpaRepository<Produto, Long> {
-    List<Produto> findAllByOrderByNomeAsc(Pageable pageable);
+
 }
