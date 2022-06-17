@@ -7,6 +7,7 @@ import br.com.alura.comex.controller.form.CategoriaForm;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,7 @@ public class CategoriaController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "relatorioPedidosPorCategoria", allEntries = true)
     public ResponseEntity<CategoriaDto> cadastrar(@RequestBody @Valid CategoriaForm form, UriComponentsBuilder uriBuilder) {
         Categoria categoria = form.converter();
         categoriaRepository.save(categoria);
@@ -55,6 +57,7 @@ public class CategoriaController {
 
     @PutMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "relatorioPedidosPorCategoria", allEntries = true)
     public ResponseEntity<CategoriaDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoCategoriaForm form) {
         Optional<Categoria> optional = categoriaRepository.findById(id);
         if (optional.isPresent()) {
@@ -67,6 +70,7 @@ public class CategoriaController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "relatorioPedidosPorCategoria", allEntries = true)
     public ResponseEntity<?> remover(@PathVariable Long id) {
         Optional<Categoria> optional = categoriaRepository.findById(id);
         if (optional.isPresent()) {
