@@ -7,6 +7,7 @@ import br.com.alura.comex.controller.form.CategoriaForm;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -37,6 +38,7 @@ public class CategoriaController {
         return ResponseEntity.notFound().build();
     }
     @GetMapping("/pedidos")
+    @Cacheable(value = "relatorioPedidosPorCategoria")
     public List<CategoriaProjection> relatorioPedidosPorCategoria() {
         return categoriaRepository.findRelatorioPedidosCategoria();
     }

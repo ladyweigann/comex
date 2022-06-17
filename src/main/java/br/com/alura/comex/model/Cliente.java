@@ -15,6 +15,9 @@ public class Cliente {
     @Embedded
     private Endereco endereco;
 
+    @OneToOne
+    private Usuario usuario;
+
 
 
     public Cliente(String nome, String cpf, String telefone, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
