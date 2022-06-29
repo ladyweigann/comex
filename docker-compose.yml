@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:latest
+    environment:  
+      MYSQL_PASSWORD: postgres
+      MYSQL_DB: comexdb
+    volumes:
+    - db-volume:/var/lib/mysql
+
+  api:
+    image: comex-api
+    environment:
+      DB_HOST: database
+    ports:
+      - "8080:8080"
+volumes:
+  db-volume:
